@@ -3,7 +3,8 @@
 1. Развернуть keycloak, создать новый проект, сконфигурировать пользователей
 2.Проверить наличие следующих зависимостей в файле pom.xml:
 
-<dependencyManagement>
+
+        <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.keycloak.bom</groupId>
@@ -14,7 +15,11 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
+    
+    
+  И сами зависимости :  
+    
+    
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
