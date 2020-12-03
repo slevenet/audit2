@@ -59,7 +59,9 @@
    AuditControllerService - работает на основе аспектов и под аудит попадает все, что помечено аннотацией @Controller.
    LogAuditFileHandler - Разделяет запись аудита по разным файлам. Именя файлов можно задать через properties:
    
+   
    audit.controller.file = controller_audit.log
+  
    audit.entity.file = entity_audit.log
    
    Думаю, стоит добавить логирование через обертку slf4j, используя аппендеры. 
