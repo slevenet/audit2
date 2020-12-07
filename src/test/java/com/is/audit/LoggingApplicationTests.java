@@ -1,4 +1,4 @@
-package com.is.logging;
+package com.is.audit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

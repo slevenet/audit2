@@ -1,0 +1,2 @@
+{"event_ts":"2020-12-03T11:04:51.567","username":"user1","user_roles":["ROLE_offline_access","ROLE_user","ROLE_uma_authorization"],"action":"GET","url":"http://localhost:8081/users","body":"","ip":"0:0:0:0:0:0:0:1","javaMethod":"com.is.audit.controllers.CustomUserAttrController.getUserInfo"}
+{"event_ts":"2020-12-03T11:05:28.301","username":"user1","user_roles":["ROLE_offline_access","ROLE_user","ROLE_uma_authorization"],"action":"GET","url":"http://localhost:8081/customers","body":"","ip":"0:0:0:0:0:0:0:1","javaMethod":"com.is.audit.controllers.MainController.customers"}
