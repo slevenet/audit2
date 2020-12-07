@@ -23,7 +23,11 @@ public abstract class AuditService {
         Audit audit = createAudit(obj);
         audit.setEvent_ts(LocalDateTime.now().toString());
         audit.setUser_roles(roles);
-        audit.setUsername(((Principal) principal.get()).getName());
+
+        if(principal.get() instanceof String)
+            audit.setUsername((String) principal.get());
+        else audit.setUsername(((Principal) principal.get()).getName());
+
         return audit;
     }
 
