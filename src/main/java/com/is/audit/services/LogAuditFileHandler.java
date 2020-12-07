@@ -3,11 +3,14 @@ package com.is.audit.services;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.is.audit.model.EntityAudit;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
+@Service
 public class LogAuditFileHandler implements LogAuditHandler{
 
     @Value("${audit.controller.file}")

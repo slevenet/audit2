@@ -2,6 +2,7 @@ package com.is.audit.services.audit;
 
 import com.is.audit.model.AuditType;
 import com.is.audit.services.LogAuditFileHandler;
+import com.is.audit.services.LogAuditHandler;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,14 +14,16 @@ public class AuditHandler {
 
 
     private final Map<AuditType, AuditService> auditServices;
+    private final LogAuditHandler logAuditFileHandler;
 
-    public AuditHandler(List<AuditService> auditList) {
+    public AuditHandler(List<AuditService> auditList,
+                        LogAuditFileHandler logAuditFileHandler) {
         this.auditServices = auditList.stream()
                 .collect(Collectors.toMap(AuditService::getAuditType, auditService -> auditService));
+        this.logAuditFileHandler = logAuditFileHandler;
     }
 
     public void audit(Object obj, AuditType auditType){
-        LogAuditFileHandler logAuditFileHandler = new LogAuditFileHandler();
         logAuditFileHandler.logAudit(auditServices.get(auditType).audit(obj));
     }
 }
