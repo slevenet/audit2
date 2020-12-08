@@ -2,7 +2,6 @@ package com.is.audit.entity;
 
 import javax.persistence.*;
 
-@EntityListeners(CustomerListener.class)
 @Entity
 public class Customer {
     @Id
