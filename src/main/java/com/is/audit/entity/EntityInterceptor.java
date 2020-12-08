@@ -4,6 +4,7 @@ import com.is.audit.ApplicationContextHolder;
 import com.is.audit.model.AuditParams;
 import com.is.audit.model.AuditType;
 import com.is.audit.services.audit.AuditHandler;
+import org.hibernate.CallbackException;
 import org.hibernate.EmptyInterceptor;
 import org.hibernate.type.Type;
 
@@ -20,8 +21,14 @@ public class EntityInterceptor extends EmptyInterceptor {
 
     @Override
     public boolean onSave(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types) {
-        audit(entity, "CREATE/UPDATE");
+        audit(entity, "CREATE");
         return super.onSave(entity, id, state, propertyNames, types);
+    }
+
+    @Override
+    public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState, String[] propertyNames, Type[] types) {
+        audit(entity, "UPDATE");
+        return super.onFlushDirty(entity, id, currentState, previousState, propertyNames, types);
     }
 
     @Override
