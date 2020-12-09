@@ -28,19 +28,21 @@ public abstract class AuditService {
             if(securityContext != null) {
                 Authentication authentication = securityContext.getAuthentication();
                 Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-                List<String> roles = authorities.stream().map(x -> x.getAuthority()).collect(Collectors.toList());
+                List<String> roles = authorities.stream()
+                        .map(x -> x.getAuthority())
+                        .collect(Collectors.toList());
                 Optional<Object> principal = Optional.of(authentication.getPrincipal());
                 audit.setUser_roles(roles);
                 if (principal.get() instanceof String)
                     audit.setUsername((String) principal.get());
                 else audit.setUsername(((Principal) principal.get()).getName());
             }
-            return audit;
         }
         catch (Exception ex){
             logger.error("Error audit", ex);
-            return audit;
         }
+
+        return audit;
     }
 
     abstract Audit createAudit(Object obj);
